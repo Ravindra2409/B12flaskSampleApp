@@ -1,23 +1,94 @@
-<div align="center"><img src="https://raw.githubusercontent.com/pallets/flask/refs/heads/stable/docs/_static/flask-name.svg" alt="" height="150"></div>
+# 🚀 CI/CD Automation for Python Web Application
 
-# Flask
+This repository demonstrates two CI/CD pipelines for a simple Python web application using:
 
-Flask is a lightweight [WSGI] web application framework. It is designed
-to make getting started quick and easy, with the ability to scale up to
-complex applications. It began as a simple wrapper around [Werkzeug]
-and [Jinja], and has become one of the most popular Python web
-application frameworks.
+- **Jenkins Pipeline** for automated build, test, and deployment
+- **GitHub Actions Workflow** for staging and production deployment
 
-Flask offers suggestions, but doesn't enforce any dependencies or
-project layout. It is up to the developer to choose the tools and
-libraries they want to use. There are many extensions provided by the
-community that make adding new functionality easy.
+---
 
-[WSGI]: https://wsgi.readthedocs.io/
-[Werkzeug]: https://werkzeug.palletsprojects.com/
-[Jinja]: https://jinja.palletsprojects.com/
+## 📦 Application Overview
 
-## A Simple Example
+The application is a basic Flask-based Python web app. It includes:
+
+- `app.py`: Main application file
+- `requirements.txt`: Dependency list
+- `tests/`: Unit tests using `pytest`
+
+---
+
+## 🧪 Jenkins Pipeline Setup
+
+### 🔧 Prerequisites
+
+- Jenkins installed on a VM or cloud instance
+- Python 3 and pip installed on the Jenkins server
+- GitHub repository forked and cloned into Jenkins workspace
+
+### 📁 Jenkinsfile
+
+The `Jenkinsfile` defines a pipeline with the following stages:
+
+1. **Build**: Create virtual environment and install dependencies
+2. **Test**: Run unit tests using `pytest`
+3. **Deploy**: Deploy to staging if tests pass
+4. **Notifications**: Email alerts on success or failure
+
+### 🔁 GitHub Trigger
+
+- GitHub webhook configured to trigger Jenkins on push to `main`
+- Webhook URL: `http://35.182.9.255:8080/github-webhook/`
+
+### 📧 Email Notifications
+
+- Configured in `Jenkinsfile` using `mail` step
+- Alerts sent on build success or failure
+
+---
+
+## ⚙️ GitHub Actions CI/CD Workflow
+
+### 📁 Workflow File
+
+Located at `.github/workflows/ci-cd.yml`, the workflow includes:
+
+1. **Install Dependencies**: Using pip
+2. **Run Tests**: With `pytest`
+3. **Build**: Prepare for deployment
+4. **Deploy to Staging**: On push to `staging` branch
+5. **Deploy to Production**: On release tag
+
+### 🔐 Secrets Configuration
+
+Add the following secrets in GitHub:
+- `STAGING_API_KEY`
+- `PROD_API_KEY`
+
+### 🧪 Branch Strategy
+
+- `main`: Development
+- `staging`: Pre-production testing
+- `release`: Tagged for production deployment
+
+---
+
+## 📸 Screenshots
+
+Screenshots of pipeline executions are included in the `screenshots/` folder:
+- Jenkins build, test, deploy stages
+- GitHub Actions workflow runs
+
+---
+
+## 📄 Submission Instructions
+
+- GitHub Repository: [https://github.com/Ravindra2409/B12flaskSampleApp]
+- Submit this link via Vlearn in a `.txt`, `.docx`, or `.pdf` file
+- Ensure screenshots and documentation are included
+
+---
+======
+A Simple Example
 
 ```python
 # save this as app.py
@@ -35,9 +106,20 @@ $ flask run
   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
+======
 
-See our [detailed contributing documentation][contrib] for many ways to
-contribute, including reporting issues, requesting features, asking or answering
-questions, and making PRs.
+## 🧠 Author
+
+**Ravindra**  
+Systems thinker and automation enthusiast  
+Specialized in CI/CD, cloud infrastructure, and agentic workflows
+
+---
+
+
+
+
+
+
 
 [contrib]: https://palletsprojects.com/contributing/
